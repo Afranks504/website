@@ -92,6 +92,7 @@ function capitalizeAllWords(string) {
    Use array.join(""); at the end to turn the final Array back into a string.
    */
    string = string.charAt(0).toUpperCase(0);
+   
    return string;
 }
 
@@ -101,6 +102,7 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
+    return 'Welcome ' + capitalizeWord(object.name) +'!';
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -108,7 +110,7 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-    
+    return capitalizeWord(object.name) + " is a " + capitalizeWord(object.species);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -116,8 +118,14 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
+    if(Array.isArray(object.noises)){
+         return object.noises.join(' ');
+    }else{
+        return 'there are no noises';
     
-}
+    }
+};
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////

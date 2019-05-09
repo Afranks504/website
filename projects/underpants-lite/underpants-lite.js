@@ -352,12 +352,17 @@ _.partition = function(array, func) {
  *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
  */
 _.every = function(collection, test){
-    var result = true
+    var result = true;
+    if(test === undefined){
+        test = function(value){
+            return value ? true : false;
+        };
+    }
    _.each(collection, function(value,i,collection){
        if (test(value, i, collection)===false){
            result = false;
        }
-   })
+   });
    
    return result;
 };
@@ -382,6 +387,21 @@ _.every = function(collection, test){
  *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
  *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
  */
+_.some = function(collection, test){
+    var result = false;
+    if(test === undefined){
+        test = function(value){
+            return value ? true : false;
+        };
+    }
+   _.each(collection, function(value,i,collection){
+       if (test(value, i, collection)===true){
+           result = true;
+       }
+   });
+   
+   return result;
+};
 
 /** _.pluck
  * Arguments:
